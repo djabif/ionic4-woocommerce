@@ -1,0 +1,53 @@
+.product-image
+{
+	width: 100%;
+}
+
+.small-content{
+	height: 110px;
+	background-color: #FAEBD7;
+}
+.results-div{
+
+	border-bottom: 5%;
+
+	.results{
+		text-align: center;
+	}
+}
+
+
+.card-title{
+  font-size: 12px;
+  text-align: center;
+	height: 20px;
+}
+
+.product-description
+{
+  text-align: center;
+	font-size: 15px;
+	margin: 2px 0px 0px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+
+	.actual-price
+	{
+		font-weight: 500;
+	}
+
+	.previous-price
+	{
+		text-decoration: line-through;
+
+		&::before
+		{
+			content: '';
+			width: 0px;
+			height: 100%;
+			border-right: solid 2px;
+		  margin: 0px 6px 0px 3px;
+		}
+	}
+}

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Feed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="results-div">
+    <p class="results">{{products.length}} Results</p>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let product of products" size="6">
+        <img (click)="viewDetails(product.id)" class="product-image" src="{{ product.images[0].src }}">
+        <ion-card class="small-content">
+          <ion-card-header>
+            <ion-card-title class="card-title">{{product.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="product-description" *ngIf="product.sale_price">
+              <b class="actual-price">${{product.sale_price}}</b>
+              <span class="previous-price" [hidden]="product.price == '0'">${{product.regular_price}}</span>
+            </p>
+            <p class="product-description" *ngIf="!product.sale_price">
+              <span class="actual-price" [hidden]="product.price == '0'">${{product.regular_price}}</span>
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{product.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager="true" class="slides">
+    <ion-slide *ngFor="let image of product.images">
+        <img class="product-image" src="{{image.src}}">
+    </ion-slide>
+  </ion-slides>
+  <div class="categories">
+    <ion-badge *ngFor="let category of product.categories" color="primary">{{category.name}}</ion-badge>
+  </div>
+  <ion-card class="content">
+    <ion-card-header>
+      <ion-card-title>{{product.name}}</ion-card-title>
+      <ion-card-subtitle>Price: ${{product.price}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content [innerHtml]="product.description"></ion-card-content>
+  </ion-card>
+</ion-content>
